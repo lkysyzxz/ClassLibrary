@@ -4,9 +4,11 @@
 * 按指定名字，在Excel文件中增加工作簿
 * 按名字获取Excel文件中的工作簿
 * 向工作簿中的单元格写数据
+* 在工作表中插入图片
 
 # 注意事项
 &emsp;&emsp;该类库可以在C++项目中调用，但是该类库是基于.Net Framework4.5开发的。使用方法请遵循C++非托管代码中调用托管代码的规则，具体的可以使用搜索引擎.<br>
+&emsp;&emsp;插入图片只写了一个简单的接口，左上角的位置固定，长宽都固定，因此需要完善的请看源码.<br>
 
 # 使用方法
 &emsp;&emsp;Try to use it and get it by your self.Good luck!!<br>
