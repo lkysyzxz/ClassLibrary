@@ -5,6 +5,8 @@ using System.Web;
 using Microsoft.Office.Interop;
 using Microsoft.Office.Core;
 using System.Runtime.InteropServices;
+using Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace Microsoft.Operation
 {
@@ -129,17 +131,27 @@ namespace Microsoft.Operation
         }
 
 
-        public void UniteCells(Microsoft.Office.Interop.Excel.Worksheet ws, int x1, int y1, int x2, int y2)
-        //合并单元格
+        //禁用提示框
+        public void DisableAlert()
         {
-            ws.get_Range(ws.Cells[x1, y1], ws.Cells[x2, y2]).Merge(Type.Missing);
+            app.DisplayAlerts = false;
         }
+
+        //public void UniteCells(Microsoft.Office.Interop.Excel.Worksheet ws, int x1, int y1, int x2, int y2)
+        ////合并单元格
+        //{
+        //    ws.get_Range(ws.Cells[x1, y1], ws.Cells[x2, y2]).Merge(Type.Missing);
+        //}
 
         public void UniteCells(string ws, int x1, int y1, int x2, int y2)
         //合并单元格
         {
-            GetSheet(ws).get_Range(GetSheet(ws).Cells[x1, y1], GetSheet(ws).Cells[x2, y2]).Merge(Type.Missing);
-
+            //GetSheet(ws).Cells[x1, y1], GetSheet(ws).Cells[x2, y2]
+            Worksheet _ws = GetSheet(ws);
+            Range r1 = _ws.Cells[x1, y1];
+            Range r2 = _ws.Cells[x2, y2];
+            Range r = _ws.Range[r1,r2];
+            r.Merge(Type.Missing);
         }
 
 
